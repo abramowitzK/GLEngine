@@ -76,6 +76,19 @@ const std::string & Window::GetTitle()
 	return s_title;
 }
 
+void Window::SetCursorVisible(bool visible)
+{
+	if (visible)
+		SDL_ShowCursor(1);
+	else
+		SDL_ShowCursor(0);
+}
+
+void Window::SetMousePosition(Vector2f pos)
+{
+	SDLSetMousePosition((int)pos.GetX(), (int)pos.GetY());
+}
+
 void Window::CreateSDLWindow(const char * title, int x, int y, int width, int height, bool fullscreen)
 {
 	int mode = 0;

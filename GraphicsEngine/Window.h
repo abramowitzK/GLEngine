@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <string>
 #include <GL\glew.h>
+#include "Vector.h"
 class Window
 {
 public:
@@ -15,7 +16,9 @@ public:
 	static int GetWidth();
 	static int GetHeight();
 	static float GetAspect();
-	static const std::string& GetTitle();
+	static const std::string& GetTitle();	
+	static void SetCursorVisible(bool visible);
+	static void SetMousePosition(Vector2f pos);
 private:
 	static SDL_Window* s_window;
 	static SDL_GLContext s_glContext;
