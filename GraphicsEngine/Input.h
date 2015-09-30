@@ -1,6 +1,6 @@
 #pragma once
-#include <SDL.h>
 #include "Vector.h"
+#include "Window.h"
 
 class Input
 {

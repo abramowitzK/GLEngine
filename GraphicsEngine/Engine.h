@@ -5,7 +5,7 @@ class Engine
 {
 public:
 	Engine();
+	~Engine();
 private:
-	SDL_Window* m_window;
 
 };

@@ -1,4 +1,10 @@
 #include "Window.h"
+int Window::s_width;
+int Window::s_height;
+std::string Window::s_title;
+SDL_Window* Window::s_window;
+SDL_GLContext Window::s_glContext;
+bool Window::s_isCloseRequested;
 void Window::Create(int width, int height, const std::string & title)
 {
 	s_isCloseRequested = false;

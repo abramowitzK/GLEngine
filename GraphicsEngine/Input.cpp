@@ -1,6 +1,5 @@
 #include "Input.h"
-#include "Window.h"
-#include <SDL.h>
+
 
 const static int NUM_KEYS = 512;
 const static int NUM_MOUSEBUTTONS = 256;
