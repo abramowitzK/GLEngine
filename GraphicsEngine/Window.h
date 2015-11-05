@@ -8,12 +8,15 @@
 class Window
 {
 public:
-	static void Create(int width, int height, const std::string& title);
+	static void Create(const int & width, const int & height, const std::string & title);
 	static void SwapBuffers();
 	static void Dispose();
 	static void SetFullScreen(bool fullscreen);
 	static void SetMousePosition(int x, int y);
-	static bool IsCloseRequested();
+	static inline bool IsCloseRequested()
+	{
+		return s_isCloseRequested;
+	}
 	static void SetIsCloseRequested(bool value);
 	static int GetWidth();
 	static int GetHeight();

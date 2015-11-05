@@ -160,11 +160,13 @@
     <ClCompile Include="Engine.h" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Time.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Input.h" />
     <ClInclude Include="ReferenceCounter.h" />
+    <ClInclude Include="Time.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

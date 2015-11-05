@@ -5,7 +5,7 @@ std::string Window::s_title;
 SDL_Window* Window::s_window;
 SDL_GLContext Window::s_glContext;
 bool Window::s_isCloseRequested;
-void Window::Create(int width, int height, const std::string & title)
+void Window::Create(const int & width, const int & height, const std::string & title)
 {
 	s_isCloseRequested = false;
 
@@ -51,10 +51,6 @@ void Window::SetMousePosition(int x, int y)
 void Window::SetFullScreen(bool fullscreen)
 {
 	SDLSetWindowFullscreen(fullscreen);
-}
-bool Window::IsCloseRequested()
-{
-	return s_isCloseRequested;
 }
 
 void Window::SetIsCloseRequested(bool value)
