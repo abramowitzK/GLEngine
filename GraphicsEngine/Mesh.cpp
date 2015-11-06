@@ -58,10 +58,16 @@ Mesh::Mesh(const std::string& fileName)
 		}
 
 		const aiMesh* model = scene->mMeshes[0];
-
 		std::vector<Vertex> vertices;
 		std::vector<int> indices;
-
+		Matrix3f scale = Matrix3f();
+		scale.InitScale(Vector2f(10, 10));
+		//Kyle Edit
+		for (auto v : vertices)
+		{
+			v.pos.SetX(v.pos.GetX() + 100);
+		}
+		//Kyle  edit end
 		const aiVector3D aiZeroVector(0.0f, 0.0f, 0.0f);
 		for (unsigned int i = 0; i < model->mNumVertices; i++)
 		{

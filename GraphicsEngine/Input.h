@@ -372,7 +372,9 @@ public:
 	static bool GetMouse(int button);
 	static bool GetMouseDown(int button);
 	static bool GetMouseUp(int button);
-	static Vector2i GetMousePosition();
+	static Vector2f GetMousePosition();
+	static void SetCursor(bool value);
+	static void SetMousePosition(Vector2f pos);
 
 protected:
 private:

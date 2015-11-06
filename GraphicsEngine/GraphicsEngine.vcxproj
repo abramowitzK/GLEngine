@@ -162,6 +162,8 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Engine.h" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="FreeLook.cpp" />
+    <ClCompile Include="FreeMove.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -169,6 +171,7 @@
     <ClCompile Include="Math3D.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="RenderingEngine.cpp" />
+    <ClCompile Include="RenderUtil.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -180,7 +183,10 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="3DEngine.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="FreeLook.h" />
+    <ClInclude Include="FreeMove.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameComponent.h" />
     <ClInclude Include="GameObject.h" />
@@ -189,8 +195,10 @@
     <ClInclude Include="MappedValues.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="ReferenceCounter.h" />
     <ClInclude Include="RenderingEngine.h" />
+    <ClInclude Include="RenderUtil.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Shader.h" />

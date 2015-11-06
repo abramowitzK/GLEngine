@@ -103,7 +103,19 @@ bool Input::GetMouseUp(int button)
 	return upMouse[button];
 }
 
-Vector2i Input::GetMousePosition()
+Vector2f Input::GetMousePosition()
 {
-	return Vector2i(mouseX, mouseY);
+	return Vector2f(mouseX, mouseY);
+}
+void Input::SetCursor(bool visible)
+{
+	if (visible)
+		SDL_ShowCursor(1);
+	else
+		SDL_ShowCursor(0);
+}
+
+void Input::SetMousePosition(Vector2f pos)
+{
+	Window::SetMousePosition((int)pos.GetX(), (int)pos.GetY());
 }

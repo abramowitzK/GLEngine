@@ -1,12 +1,22 @@
 #include "Engine.h"
+#include "Game.h"
+#include "RenderingEngine.h"
 #include <math.h>
-Engine::Engine(int width, int height, char* title)
+Engine::Engine(int width, int height, char* title, Game* game)
 {
 	m_width = width;
 	m_height = height;
 	m_title = title;
 	m_sceneManager = new SceneManager();
-
+	Window::Create(m_width, m_height, m_title);
+	GLint res = glewInit();
+	if (GLEW_OK != res)
+	{
+		std::cerr << "Error initializing glew" << std::endl;
+		SDL_Quit();
+		exit(1);
+	}
+	m_rendering = new RenderingEngine();
 	///collision configuration contains default setup for memory, collision setup. Advanced users can create their own configuration.
 	btDefaultCollisionConfiguration* collisionConfiguration = new btDefaultCollisionConfiguration();
 
@@ -26,6 +36,9 @@ Engine::Engine(int width, int height, char* title)
 	// Set our physics world
 	m_physicsWorld = dynamicsWorld;
 
+	m_game = game;
+	m_game->SetEngine(this);
+
 }
 
 Engine::~Engine()
@@ -35,9 +48,10 @@ Engine::~Engine()
 
 void Engine::Start()
 {
+	RenderUtil::InitGraphics();
 	m_isRunning = true;
 	m_sceneManager->InitScene();
-	Window::Create(m_width, m_height, m_title);
+
 	Run();
 }
 
@@ -84,21 +98,13 @@ void Engine::Run()
 			
 			//Process input
 			Input::Update();
+			m_game->Input(dt);
+			m_game->Render(m_rendering);
 			m_physicsWorld->stepSimulation((btScalar)dt);
 			//Step physics simulation here when i get around to it...
 			t += dt;
 			accumulator -= dt;
 		}
-
-		//Temp immediate mode to test triangle...
-		glBegin(GL_TRIANGLES);
-		glVertex2f(-1.0, -1.0);
-		glColor3f(1.0, 0.0, 0.0);
-		glVertex2f(0.0, 1.0);
-		glColor3f(0.0, 1.0, 0.0);
-		glVertex2f(1.0, -1.0);
-		glColor3f(0.0, 0.0, 1.0);
-		glEnd();
 		//All rendering done. Flip buffers
 		Window::SwapBuffers();
 #ifdef _DEBUG

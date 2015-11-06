@@ -7,11 +7,15 @@
 #include "Time.h"
 #include "Input.h"
 #include "SceneManager.h"
+#include "RenderUtil.h"
+
+class RenderingEngine;
+class Game;
 
 class Engine
 {
 public:
-	Engine(int width, int height, char* title);
+	Engine(int width, int height, char* title, Game* game);
 	~Engine();
 	void Start();
 	void Stop();
@@ -26,4 +30,5 @@ private:
 	SceneManager* m_sceneManager;
 	RenderingEngine* m_rendering;
 	const double FPS = 60.0;
+	Game* m_game;
 };

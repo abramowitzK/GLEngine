@@ -2,6 +2,7 @@
 
 #include "Vertex.h"
 #include "ReferenceCounter.h"
+#include "Material.h"
 #include <string>
 #include <map>
 
