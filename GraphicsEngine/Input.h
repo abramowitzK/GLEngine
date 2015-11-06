@@ -1,5 +1,5 @@
 #pragma once
-#include "Vector.h"
+#include "Math.h"
 #include "Window.h"
 
 class Input

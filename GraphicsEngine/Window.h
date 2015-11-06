@@ -3,7 +3,7 @@
 #include <string>
 #define GLEW_STATIC
 #include <GL\glew.h>
-#include "Vector.h"
+#include "Math3D.h"
 
 class Window
 {
