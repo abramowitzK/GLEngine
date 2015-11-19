@@ -50,7 +50,7 @@ void Engine::Run()
 			frameTime = 0.25;
 		currentTime = newTime;
 		accumulator += frameTime;
-#ifdef _DEBUG //This doesn't work. Need to figure out why
+#ifdef _DEBUG
 		frameCounter += frameTime;
 		if (frameCounter >= 1.0)
 		{
@@ -66,6 +66,7 @@ void Engine::Run()
 				Stop();		
 			//Process input
 			Input::Update();
+			Engine::Update();
 			//Step physics simulation here when i get around to it...
 			t += dt;
 			accumulator -= dt;

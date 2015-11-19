@@ -14,7 +14,7 @@ extern "C"
 #include <Lua/lualib.h>
 }
 #include "../Scripting/LuaBridge/LuaBridge.h"
-
+#include "../Scripting/LuaEngine.h"
 class Engine
 {
 public:
@@ -31,7 +31,7 @@ public:
 			.beginNamespace("Engine") //our defined namespace (w.e we want to call it)
 			.beginClass<Engine>("Engine") //define class object
 			.addConstructor<void(*) (int, int, const char*)>()
-			.addFunction<>("start", &Engine::Start)
+			.addFunction("start", &Engine::Start)
 			.endClass() //end class
 			.endNamespace(); //end namespace
 	}
@@ -40,4 +40,6 @@ private:
 	int m_width;
 	const char* m_title;
 	bool m_isRunning = false;
+
+	LuaEngine* m_luaEngine;
 };
