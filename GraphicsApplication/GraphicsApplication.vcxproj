@@ -72,12 +72,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)/deps/include;$(SolutionDir)/GraphicsEngine;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)deps/lib;$(SolutionDir)deps/lib/Assimp;$(SolutionDir)deps/lib/GLEW;$(SolutionDir)deps/lib/SDL;$(SolutionDir)deps/lib/Bullet;$(SolutionDir)x64/Debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)deps/lib;$(SolutionDir)deps/lib/Assimp;$(SolutionDir)deps/lib/GLEW;$(SolutionDir)deps/lib/SDL;$(SolutionDir)deps/lib/Bullet;$(SolutionDir)x64/Debug;$(SolutionDir)deps/lib/Lua;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)/deps/include;$(SolutionDir)/GraphicsEngine;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)deps/lib;$(SolutionDir)deps/lib/Assimp;$(SolutionDir)deps/lib/GLEW;$(SolutionDir)deps/lib/SDL;$(SolutionDir)deps/lib/Bullet;$(SolutionDir)x64/Debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)deps/lib;$(SolutionDir)deps/lib/Assimp;$(SolutionDir)deps/lib/GLEW;$(SolutionDir)deps/lib/SDL;$(SolutionDir)deps/lib/Bullet;$(SolutionDir)x64/Debug;$(SolutionDir)deps/lib/Lua;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
