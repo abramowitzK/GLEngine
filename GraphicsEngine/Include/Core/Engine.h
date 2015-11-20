@@ -1,4 +1,5 @@
 #pragma once
+#define GLEW_STATIC
 #include <SDL.h>
 #include <GL\glew.h>
 #include <iostream>
@@ -6,15 +7,10 @@
 #include "../Util/Time.h"
 #include "Input.h"
 #include "../Util/RenderUtil.h"
+#include "../Interfaces.h"
+#include "../../Include/Scripting/ScriptingManager.h"
+#include <vector>
 
-extern "C"
-{
-#include <Lua/lua.h>
-#include <Lua/lauxlib.h>
-#include <Lua/lualib.h>
-}
-#include "../Scripting/LuaBridge/LuaBridge.h"
-#include "../Scripting/LuaEngine.h"
 class Engine
 {
 public:
@@ -24,22 +20,10 @@ public:
 	void Stop();
 	void Run();
 	void Update();
-	static void Engine::register_lua(lua_State* L)
-	{
-		using namespace luabridge;
-		getGlobalNamespace(L) //global namespace to lua
-			.beginNamespace("Engine") //our defined namespace (w.e we want to call it)
-			.beginClass<Engine>("Engine") //define class object
-			.addConstructor<void(*) (int, int, const char*)>()
-			.addFunction("start", &Engine::Start)
-			.endClass() //end class
-			.endNamespace(); //end namespace
-	}
 private:
 	int m_height;
 	int m_width;
 	const char* m_title;
 	bool m_isRunning = false;
-
-	LuaEngine* m_luaEngine;
+	std::vector<IManager&> m_managers;
 };

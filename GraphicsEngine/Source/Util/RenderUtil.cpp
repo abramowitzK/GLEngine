@@ -15,4 +15,5 @@ void RenderUtil::InitGraphics()
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_DEPTH_CLAMP);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 }

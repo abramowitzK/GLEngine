@@ -83,7 +83,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)%(RelativeDir)/</ObjectFileName>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -107,7 +107,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)%(RelativeDir)/</ObjectFileName>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -159,9 +159,31 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Include\Components\MeshRenderer.h" />
+    <ClInclude Include="Include\Core\GameObject.h" />
     <ClInclude Include="Include\Core\Component.h" />
     <ClInclude Include="Include\Core\Engine.h" />
     <ClInclude Include="Include\Core\Input.h" />
+    <ClInclude Include="Include\Interfaces.h" />
+    <ClInclude Include="Include\Images\stb_image\stb.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_c_lexer.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_divide.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_dxt.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_easy_font.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_herringbone_wang_tile.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_image.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_image_resize.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_image_write.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_leakcheck.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_perlin.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_rect_pack.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_textedit.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_tilemap_editor.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_truetype.h" />
+    <ClInclude Include="Include\Images\stb_image\stb_voxel_render.h" />
+    <ClInclude Include="Include\Images\stb_image\stretchy_buffer.h" />
+    <ClInclude Include="Include\Math\Math3D.h" />
+    <ClInclude Include="Include\Scripting\ExposedToScript.h" />
     <ClInclude Include="Include\Scripting\lua-5.2.0\src\lapi.h" />
     <ClInclude Include="Include\Scripting\lua-5.2.0\src\lauxlib.h" />
     <ClInclude Include="Include\Scripting\lua-5.2.0\src\lcode.h" />
@@ -204,12 +226,17 @@
     <ClInclude Include="Include\Scripting\LuaBridge\LuaBridge.h" />
     <ClInclude Include="Include\Scripting\LuaBridge\RefCountedObject.h" />
     <ClInclude Include="Include\Scripting\LuaBridge\RefCountedPtr.h" />
+    <ClInclude Include="Include\Scripting\ScriptCommon.h" />
+    <ClInclude Include="Include\Scripting\ScriptingManager.h" />
     <ClInclude Include="Include\Util\RenderUtil.h" />
+    <ClInclude Include="Include\Util\Singleton.h" />
     <ClInclude Include="Include\Util\Time.h" />
     <ClInclude Include="Include\Core\Window.h" />
     <ClInclude Include="Include\Scripting\LuaEngine.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Include\Images\stb_image\stb_vorbis.c" />
+    <ClCompile Include="Source\Core\GameObject.cpp" />
     <ClCompile Include="Include\Scripting\lua-5.2.0\src\lapi.c" />
     <ClCompile Include="Include\Scripting\lua-5.2.0\src\lauxlib.c" />
     <ClCompile Include="Include\Scripting\lua-5.2.0\src\lbaselib.c" />
@@ -239,14 +266,14 @@
     <ClCompile Include="Include\Scripting\lua-5.2.0\src\ltable.c" />
     <ClCompile Include="Include\Scripting\lua-5.2.0\src\ltablib.c" />
     <ClCompile Include="Include\Scripting\lua-5.2.0\src\ltm.c" />
-    <ClCompile Include="Include\Scripting\lua-5.2.0\src\lua.c" />
-    <ClCompile Include="Include\Scripting\lua-5.2.0\src\luac.c" />
     <ClCompile Include="Include\Scripting\lua-5.2.0\src\lundump.c" />
     <ClCompile Include="Include\Scripting\lua-5.2.0\src\lvm.c" />
     <ClCompile Include="Include\Scripting\lua-5.2.0\src\lzio.c" />
+    <ClCompile Include="Source\Math\Math3D.cpp" />
     <ClCompile Include="Source\Scripting\LuaEngine.cpp" />
     <ClCompile Include="Source\Core\Engine.cpp" />
     <ClCompile Include="Source\Core\Input.cpp" />
+    <ClCompile Include="Source\Scripting\ScriptingManager.cpp" />
     <ClCompile Include="Source\Util\RenderUtil.cpp" />
     <ClCompile Include="Source\Util\Time.cpp" />
     <ClCompile Include="Source\Core\Window.cpp" />

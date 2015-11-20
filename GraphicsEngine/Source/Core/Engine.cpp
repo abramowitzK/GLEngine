@@ -13,6 +13,7 @@ Engine::Engine(int width, int height, const char* title)
 		SDL_Quit();
 		exit(1);
 	}
+	m_managers.push_back(ScriptingManager::instance);
 }
 
 Engine::~Engine()
@@ -66,7 +67,6 @@ void Engine::Run()
 				Stop();		
 			//Process input
 			Input::Update();
-			Engine::Update();
 			//Step physics simulation here when i get around to it...
 			t += dt;
 			accumulator -= dt;
