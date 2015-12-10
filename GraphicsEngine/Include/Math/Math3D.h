@@ -8,7 +8,7 @@
 #include <assimp\matrix3x3.h>
 #include <assimp\matrix4x4.h>
 #include "../../Include/Scripting/ScriptCommon.h"
-static float PI = 3.14159265358979323846264338327950288;
+static double PI = 3.14159265358979323846264338327950288;
 #define ToRadian(x) (float)(((x) * PI / 180.0f))
 #define ToDegree(x) (float)(((x) * 180.0f / PI))
 struct Vector2i
@@ -63,7 +63,7 @@ public:
 };
 
 
-class Vector3f
+struct Vector3f
 {
 public:
 	//static void register_lua(lua_State* L)
@@ -77,11 +77,9 @@ public:
 	//		.endClass() //end class
 	//		.endNamespace(); //end namespace
 	//};
-private:
 	float x;
 	float y;
 	float z;
-public:
 	Vector3f()
 	{
 	}
@@ -179,7 +177,7 @@ struct Vector4f
 
 inline Vector3f operator+(const Vector3f& l, const Vector3f& r)
 {
-	Vector3f Ret(l.x + r.x,
+	Vector3f Ret(l.x+ r.x,
 		l.y + r.y,
 		l.z + r.z);
 

@@ -159,6 +159,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Include\Components\RigidBody.h" />
     <ClInclude Include="Include\Components\MeshRenderer.h" />
     <ClInclude Include="Include\Core\GameObject.h" />
     <ClInclude Include="Include\Core\Component.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="Include\Images\stb_image\stb_voxel_render.h" />
     <ClInclude Include="Include\Images\stb_image\stretchy_buffer.h" />
     <ClInclude Include="Include\Math\Math3D.h" />
+    <ClInclude Include="Include\Rendering\GLRenderer.h" />
     <ClInclude Include="Include\Scripting\ExposedToScript.h" />
     <ClInclude Include="Include\Scripting\lua-5.2.0\src\lapi.h" />
     <ClInclude Include="Include\Scripting\lua-5.2.0\src\lauxlib.h" />
@@ -229,13 +231,14 @@
     <ClInclude Include="Include\Scripting\ScriptCommon.h" />
     <ClInclude Include="Include\Scripting\ScriptingManager.h" />
     <ClInclude Include="Include\Util\RenderUtil.h" />
-    <ClInclude Include="Include\Util\Singleton.h" />
     <ClInclude Include="Include\Util\Time.h" />
     <ClInclude Include="Include\Core\Window.h" />
     <ClInclude Include="Include\Scripting\LuaEngine.h" />
+    <ClInclude Include="Include\Core\Application.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Include\Images\stb_image\stb_vorbis.c" />
+    <ClCompile Include="Source\Components\RigidBody.cpp" />
     <ClCompile Include="Source\Core\GameObject.cpp" />
     <ClCompile Include="Include\Scripting\lua-5.2.0\src\lapi.c" />
     <ClCompile Include="Include\Scripting\lua-5.2.0\src\lauxlib.c" />

@@ -9,6 +9,8 @@
 #include "../Util/RenderUtil.h"
 #include "../Interfaces.h"
 #include "../../Include/Scripting/ScriptingManager.h"
+#include "../../Include/Rendering/GLRenderer.h"
+#include "Application.h"
 #include <vector>
 
 class Engine
@@ -25,5 +27,6 @@ private:
 	int m_width;
 	const char* m_title;
 	bool m_isRunning = false;
-	std::vector<IManager&> m_managers;
+	GLRenderer* m_renderer;
+	Application* m_application;
 };

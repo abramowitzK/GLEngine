@@ -1,5 +1,29 @@
 #include "../../Include/Core/Engine.h"
 #include <math.h>
+GLuint vbo;
+static void RenderSceneCB()
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	glEnableVertexAttribArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+
+	glDrawArrays(GL_TRIANGLES, 0, 3);
+
+	glDisableVertexAttribArray(0);
+}
+static void CreateVertexBuffer()
+{
+	Vector3f Vertices[3];
+	Vertices[0] = Vector3f(-1.0f, -1.0f, 0.0f);
+	Vertices[1] = Vector3f(1.0f, -1.0f, 0.0f);
+	Vertices[2] = Vector3f(0.0f, 1.0f, 0.0f);
+
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
+}
 Engine::Engine(int width, int height, const char* title)
 {
 	m_width = width;
@@ -13,17 +37,22 @@ Engine::Engine(int width, int height, const char* title)
 		SDL_Quit();
 		exit(1);
 	}
-	m_managers.push_back(ScriptingManager::instance);
+	m_renderer = new GLRenderer();
+	m_application = new Application();
 }
 
 Engine::~Engine()
 {
+	Window::Dispose();
+	delete m_renderer;
+	delete m_application;
 }
 
 void Engine::Start()
 {
-	RenderUtil::InitGraphics();
+	//RenderUtil::InitGraphics();
 	m_isRunning = true;
+	CreateVertexBuffer();
 	Run();
 }
 
@@ -71,7 +100,9 @@ void Engine::Run()
 			t += dt;
 			accumulator -= dt;
 		}
+		RenderSceneCB();
 		//All rendering done. Flip buffers
+
 		Window::SwapBuffers();
 #ifdef _DEBUG
 		frames++;
