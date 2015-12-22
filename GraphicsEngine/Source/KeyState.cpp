@@ -12,6 +12,11 @@ KeyState::KeyState()
 	//because we're fancy. I'm using more of an idiomatic C style and 
 	//am trying to avoid STL as much as possible
 	m_arrayMem = (bool*)malloc(sizeof(bool)*SIZE*2);
+	if (NULL == m_arrayMem)
+	{
+		//Crash and burn. This is not good. Malloc failed for some reason
+		assert(false);
+	}
 	//Dangerous!! But I think we got this right...Should test to make sure
 	m_current = m_arrayMem;
 	m_previous = m_arrayMem + SIZE;
@@ -60,6 +65,7 @@ bool KeyState::IsKeyPressed(int code) const
 	{
 		return m_current[code];
 	}
+	return false;
 }
 
 void KeyState::UpdatePrev()

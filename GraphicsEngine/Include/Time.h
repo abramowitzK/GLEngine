@@ -1,7 +1,10 @@
 #pragma once
-namespace Time
+class Time final
 {
-	double GetTime();
-	static double DeltaTime = 0.0;
+public:
+	static double GetTime();
+
+private:
+	static double DeltaTime;
 };
 

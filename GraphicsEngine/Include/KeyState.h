@@ -18,18 +18,18 @@ public:
 	Sets a key down in m_current(sets to 1)
 	@param code Represents the code from the standard USB keyboard codes. This should always use SDL_ScanCodes or Input::Keys
 	*/
-	inline void KeyDown(const int code);
+	void KeyDown(const int code);
 	/**
 	Sets a key up in m_current (sets to 0)
 	@param code Represents the code from the standard USB keyboard codes. This should always use SDL_ScanCodes or Input::Keys
 	*/
-	inline void KeyUp(const int code);
+	void KeyUp(const int code);
 	/**
 	Checks if key is currently down
 	@param code Represents the code from the standard USB keyboard codes. This should always use SDL_ScanCodes or Input::Keys
 	@return Returns true if key is down and false otherwise
 	*/
-	inline bool IsKeyPressed(const int code) const;
+	bool IsKeyPressed(const int code) const;
 	/**
 	Copies the current values into the previous values. This will be updated once per frame. The previous structure will
 	always represent the KeyState of the frame before the current one

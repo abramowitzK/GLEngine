@@ -59,6 +59,7 @@ void Engine::Stop()
 
 void Engine::Run()
 {
+	Input::SetCursor(false);
 	//Need to start main loop
 	double t = 0.0;
 	const double dt = 0.01;
@@ -72,7 +73,6 @@ void Engine::Run()
 	{
 		double newTime = Time::GetTime();
 		double frameTime = newTime - currentTime;
-		Time::DeltaTime = frameTime;
 		if (frameTime > 0.25)
 			frameTime = 0.25;
 		currentTime = newTime;
@@ -90,7 +90,8 @@ void Engine::Run()
 		{
 			//Close window if necessary
 			if (Window::IsCloseRequested())
-				Stop();		
+				Stop();
+			Input::ProcessInput();
 			//Step physics simulation here when i get around to it...
 			t += dt;
 			accumulator -= dt;

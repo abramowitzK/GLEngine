@@ -85,7 +85,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)%(RelativeDir)/</ObjectFileName>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -109,7 +109,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)%(RelativeDir)/</ObjectFileName>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -159,6 +159,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Include\Camera3D.h" />
     <ClInclude Include="Include\GameObject.h" />
     <ClInclude Include="Include\Component.h" />
     <ClInclude Include="Include\Engine.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="Include\Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Camera3D.cpp" />
     <ClCompile Include="Source\KeyState.cpp" />
     <ClCompile Include="Source\GameObject.cpp" />
     <ClCompile Include="Source\Math3D.cpp" />
@@ -184,6 +186,10 @@
     <ClCompile Include="Source\Time.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\Transform.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\simple.frag" />
+    <None Include="Shaders\simple.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
