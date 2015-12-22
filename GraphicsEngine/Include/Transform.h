@@ -35,7 +35,8 @@ public:
 		Matrix4 rot = glm::mat4_cast(m_rotation);
 		Matrix4 scale = glm::scale(m_scale);
 		Matrix4 translation = glm::translate(m_translation);
-		return scale * rot * translation;
+		Matrix4 identity = Matrix4(1.0);
+		return scale * rot * translation * identity;
 	}
 	/**
 	Sets the translation in world coordinates
@@ -82,6 +83,10 @@ public:
 		m_rotation = Quaternion(Vector3(x, y, z));
 	}
 
+	inline void Translate(const float x, const float y, const float z)
+	{
+		m_translation += Vector3(x, y, z);
+	}
 	inline Vector3 GetTranslation() const
 	{
 		return m_translation;

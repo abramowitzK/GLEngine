@@ -1,29 +1,7 @@
 #include "..\Include\Engine.h"
 #include <math.h>
-GLuint vbo;
-static void RenderSceneCB()
-{
-	glClear(GL_COLOR_BUFFER_BIT);
-
-	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-
-	glDisableVertexAttribArray(0);
-}
-static void CreateVertexBuffer()
-{
-	Vector3f Vertices[3];
-	Vertices[0] = Vector3f(-1.0f, -1.0f, 0.0f);
-	Vertices[1] = Vector3f(1.0f, -1.0f, 0.0f);
-	Vertices[2] = Vector3f(0.0f, 1.0f, 0.0f);
-
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
-}
+#include "../Include/MeshRenderer.h"
+#include <glm\gtc\type_ptr.hpp>
 Engine::Engine(int width, int height, const char* title)
 {
 	m_width = width;
@@ -48,7 +26,10 @@ void Engine::Start()
 {
 	RenderUtil::InitGraphics();
 	m_isRunning = true;
-	CreateVertexBuffer();
+	m_root = new GameObject();
+	m_mesh = new MeshRenderer("cube.obj");
+	m_root->AddRenderingComponent(m_mesh);
+	m_cam = new Camera3D(45.0f, (float)m_width / (float)m_height, 0.1f, 1000.0f);
 	Run();
 }
 
@@ -59,7 +40,6 @@ void Engine::Stop()
 
 void Engine::Run()
 {
-	Input::SetCursor(false);
 	//Need to start main loop
 	double t = 0.0;
 	const double dt = 0.01;
@@ -96,9 +76,8 @@ void Engine::Run()
 			t += dt;
 			accumulator -= dt;
 		}
-		RenderSceneCB();
 		//All rendering done. Flip buffers
-
+		Update();
 		Window::SwapBuffers();
 #ifdef _DEBUG
 		frames++;
@@ -108,4 +87,32 @@ void Engine::Run()
 
 void Engine::Update()
 {
+	RenderUtil::ClearScreen();
+	Matrix4 view = m_cam->GetViewMatrix();
+	Matrix4 proj = m_cam->GetProjectionMatrix();
+	glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0, 0.0, -4.0));
+	Matrix4 mvp = proj * view * model;
+
+	GLint loc = glGetUniformLocation(m_mesh->GetProgram(), "MVP");
+	glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(mvp));
+	m_root->Render();
+	if (Input::GetKey(Input::Keys::KEY_W))
+	{
+		m_cam->Update(Vector3(-0.1f, 0.0f, 0.0f));
+	}
+	if (Input::GetKey(Input::Keys::KEY_S))
+	{
+		m_cam->Update(Vector3(0.1f, 0.0f, 0.0f));
+	}
+	if (Input::GetKey(Input::Keys::KEY_A))
+	{
+		m_cam->Update(Vector3(0.0f, 0.0f, -0.1f));
+	}
+	if (Input::GetKey(Input::Keys::KEY_D))
+	{
+		m_cam->Update(Vector3(0.0f, 0.0f, 0.1f));
+	}
+
+	
 }
+

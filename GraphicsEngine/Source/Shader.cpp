@@ -1,7 +1,7 @@
 #include "..\Include\Shader.h"
 #include <cassert>
 
-std::string Shader::SHADER_DIR = "..\\..\\res\\shaders";
+std::string Shader::SHADER_DIR = "";//"..\\..\\res\\shaders";
 Shader::Shader()
 {
 	m_program = glCreateProgram();
@@ -10,6 +10,9 @@ Shader::Shader()
 		//Do error stuff here. For now we're just going to crash horribly
 		assert(false);
 	}
+	//Load default forward passthrough shaders for now. Should add ambient to them 
+	LoadVertexShader("simple.vert");
+	LoadFragmentShader("simple.frag");
 }
 
 Shader::~Shader()
@@ -24,7 +27,7 @@ Shader::~Shader()
 
 void Shader::LoadVertexShader(std::string shaderFileName)
 {
-	shaderFileName = SHADER_DIR + "\\" + shaderFileName;
+	shaderFileName = SHADER_DIR + shaderFileName;
 	std::ifstream fs(shaderFileName);
 	std::stringstream buffer;
 	buffer << fs.rdbuf();
@@ -33,7 +36,7 @@ void Shader::LoadVertexShader(std::string shaderFileName)
 
 void Shader::LoadFragmentShader(std::string shaderFileName)
 {
-	shaderFileName = SHADER_DIR + "\\" + shaderFileName;
+	shaderFileName = SHADER_DIR + shaderFileName;
 	std::ifstream fs(shaderFileName);
 	std::stringstream buffer;
 	buffer << fs.rdbuf();
@@ -83,7 +86,22 @@ void Shader::AddProgram(const GLchar * text, GLuint type)
 void Shader::CompileShader()
 {
 	glLinkProgram(m_program);
+	GLint success;
+	glGetProgramiv(m_program, GL_LINK_STATUS, &success);
+	if (!success)
+	{
+		GLchar InfoLog[1024];
+		glGetProgramInfoLog(m_program, sizeof(InfoLog), NULL, InfoLog);
+		fprintf(stderr, "Error linking shader!: %s\n",InfoLog);
+		exit(1);
+	}
 	glValidateProgram(m_program);
+	glGetProgramiv(m_program, GL_VALIDATE_STATUS, &success);
+	if (!success)
+	{
+		fprintf(stderr, "Error linking shader!\n");
+		exit(1);
+	}
 }
 
 

@@ -14,6 +14,10 @@ public:
 	void LoadVertexShader(std::string shaderFileName);
 	void LoadFragmentShader(std::string shaderFileName);
 	void Bind();
+	GLuint GetProgram() const
+	{
+		return m_program;
+	}
 private:
 	void AddVertexShader(const GLchar* text);
 	void AddFragmentShader(const GLchar* text);

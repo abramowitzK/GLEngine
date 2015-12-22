@@ -5,7 +5,8 @@ GameObject::GameObject()
 	m_parent = nullptr;
 	m_components = new std::vector<Component*>;
 	m_children = new std::vector<GameObject*>;
-	m_renderableComponents = new std::vector<IRenderable*>;
+	m_renderableComponents = new std::vector<IRenderableComponent*>;
+	m_transform = Transform();
 }
 
 GameObject::GameObject(GameObject* parent)
@@ -13,7 +14,7 @@ GameObject::GameObject(GameObject* parent)
 	m_parent = parent;
 	m_components = new std::vector<Component*>;
 	m_children = new std::vector<GameObject*>;
-	m_renderableComponents = new std::vector<IRenderable*>;
+	m_renderableComponents = new std::vector<IRenderableComponent*>;
 }
 
 GameObject::~GameObject()
@@ -41,7 +42,7 @@ void GameObject::Render()
 		r->Render();
 }
 
-Transform GameObject::GetTranform() const
+Transform GameObject::GetTransform() const
 {
-	return Transform();
+	return m_transform;
 }

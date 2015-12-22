@@ -9,6 +9,9 @@
 #include "RenderUtil.h"
 #include "Interfaces.h"
 #include "Math3D.h"
+#include "GameObject.h"
+#include "MeshRenderer.h"
+#include "Camera3D.h"
 #include <vector>
 
 class Engine
@@ -32,6 +35,9 @@ public:
 	*/
 	void EndFrame();
 private:
+	GameObject* m_root;
+	Camera3D* m_cam;
+	MeshRenderer* m_mesh;
 	int m_height;
 	int m_width;
 	const char* m_title;

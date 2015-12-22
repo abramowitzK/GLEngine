@@ -1,8 +1,11 @@
 #pragma once
+#include "Component.h"
 //Renderable interface
-class IRenderable
+class IRenderableComponent : public Component
 {
 public:
+	IRenderableComponent() : Component(Component::Type::MESH_RENDERER)
+	{}
 	virtual void Render() = 0;
 };
 //Interface for all subsystem managers

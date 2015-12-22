@@ -170,13 +170,16 @@
     <ClInclude Include="Include\Scripting\ScriptCommon.h" />
     <ClInclude Include="Include\RenderUtil.h" />
     <ClInclude Include="Include\Time.h" />
+    <ClInclude Include="Include\Vertex3D.h" />
     <ClInclude Include="Include\Window.h" />
     <ClInclude Include="Include\Scripting\LuaEngine.h" />
     <ClInclude Include="Include\Transform.h" />
     <ClInclude Include="Include\MeshRenderer.h" />
     <ClInclude Include="Include\Shader.h" />
+    <ClInclude Include="Include\Mesh.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Mesh.cpp" />
     <ClCompile Include="Source\MeshRenderer.cpp" />
     <ClCompile Include="Source\Shader.cpp" />
     <ClCompile Include="Source\Camera3D.cpp" />
