@@ -1,0 +1,74 @@
+#include "../Include/KeyState.h"
+#include <cstring>
+#include <cstdlib>
+#include <cassert>
+
+KeyState::KeyState()
+{
+	//Allocate contiguous memory for two arrays of size SIZE. I want to avoid 
+	//allocating this on the stack because it's going to be around for
+	//the lifetime of the application and will take up a significant
+	//amount of stack space. We'll do the allocation in one malloc call
+	//because we're fancy. I'm using more of an idiomatic C style and 
+	//am trying to avoid STL as much as possible
+	m_arrayMem = (bool*)malloc(sizeof(bool)*SIZE*2);
+	//Dangerous!! But I think we got this right...Should test to make sure
+	m_current = m_arrayMem;
+	m_previous = m_arrayMem + SIZE;
+	//Not sure if necessary but we'll include it anyway for safety as this should never be 
+	//called in a tight loop and we're not worried about wasting clock cycles. 
+	memset(m_arrayMem, 0, SIZE * 2*sizeof(bool));
+}
+
+KeyState::~KeyState()
+{
+	free(m_arrayMem);
+	//This shouldn't impact performance and safety is nice
+	m_current = nullptr;
+	m_previous = nullptr;
+	m_arrayMem = nullptr;
+}
+
+void KeyState::KeyDown(int code)
+{
+#ifdef _DEBUG
+	assert(code < SIZE);
+#endif
+	if (code < SIZE)
+	{
+		m_current[code] = 1;
+	}
+}
+
+void KeyState::KeyUp(int code)
+{
+#ifdef _DEBUG
+	assert(code < SIZE);
+#endif
+	if (code < SIZE)
+	{
+		m_current[code] = 0;
+	}
+}
+
+bool KeyState::IsKeyPressed(int code) const
+{
+#ifdef _DEBUG
+	assert(code < SIZE);
+#endif
+	if (code < SIZE)
+	{
+		return m_current[code];
+	}
+}
+
+void KeyState::UpdatePrev()
+{
+	//I'm not sure if this is faster than memcpy followed by memset or
+	//some other clever method to do this that I haven't thought of...
+	bool* temp = m_previous;
+	m_previous = m_current;
+	m_current = m_previous;
+	memset(m_current, 0, SIZE*sizeof(bool));
+
+}
