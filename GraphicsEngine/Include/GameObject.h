@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <cstdint>
+#include "Interfaces.h"
 #include "Component.h"
 #include "Transform.h"
 class GameObject
@@ -16,6 +17,7 @@ private:
 	Transform m_transform;
 	uint32_t m_id;
 	GameObject* m_parent;
+	std::vector<IRenderable*>* m_renderableComponents;
 	std::vector<Component*>* m_components;
 	std::vector<GameObject*>* m_children;
 };

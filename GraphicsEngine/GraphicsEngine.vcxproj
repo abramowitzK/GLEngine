@@ -173,8 +173,12 @@
     <ClInclude Include="Include\Window.h" />
     <ClInclude Include="Include\Scripting\LuaEngine.h" />
     <ClInclude Include="Include\Transform.h" />
+    <ClInclude Include="Include\MeshRenderer.h" />
+    <ClInclude Include="Include\Shader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\MeshRenderer.cpp" />
+    <ClCompile Include="Source\Shader.cpp" />
     <ClCompile Include="Source\Camera3D.cpp" />
     <ClCompile Include="Source\KeyState.cpp" />
     <ClCompile Include="Source\GameObject.cpp" />

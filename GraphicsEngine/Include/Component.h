@@ -10,6 +10,8 @@ class Component
 public:
 	enum class Type
 	{
+		NONE,
+		MESH_RENDERER,
 		LUA_SCRIPT,
 		LIGHT,
 		UI_TEXT,
@@ -19,6 +21,10 @@ public:
 		CAMERA,
 		PHYSICS_RIGIDBODY
 	};
+	Component()
+	{
+		m_type = Type::NONE;
+	}
 	Component(Type type)
 	{
 		m_type = type;
@@ -37,6 +43,7 @@ public:
 	{
 		return m_type;
 	}
+
 
 protected:
 	GameObject* m_parent;
