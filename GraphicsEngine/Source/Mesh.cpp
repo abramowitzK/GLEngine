@@ -28,7 +28,8 @@ Mesh::Mesh(std::string modelFileName) : m_fileName(modelFileName)
 
 		Vertex3D vert;
 		vert.pos = Vector3(pPos->x, pPos->y, pPos->z);
-		//vert.normal = Vector3(pNormal->x, pNormal->y, pNormal->z);
+		vert.normal = Vector3(pNormal->x, pNormal->y, pNormal->z);
+		vert.texCoords = Vector2(pTexCoord->x, pTexCoord->y);
 
 		vertices.push_back(vert);
 	}

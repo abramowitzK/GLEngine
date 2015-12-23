@@ -30,7 +30,7 @@ void Engine::Start()
 	m_root = new GameObject();
 	m_mesh = new MeshRenderer("monkey.obj");
 	m_root->AddRenderingComponent(m_mesh);
-	m_cam = new Camera3D(90.0f, (float)m_width / (float)m_height, 0.1f, 1000.0f);
+	m_cam = new Camera3D(120.0f, (float)m_width / (float)m_height, 0.1f, 1000.0f);
 	Run();
 }
 
@@ -89,6 +89,7 @@ void Engine::Run()
 
 void Engine::Update()
 {
+	//Hack just to test rendering
 	RenderUtil::ClearScreen();
 	Matrix4 view = m_cam->GetViewMatrix();
 	Matrix4 proj = m_cam->GetProjectionMatrix();
