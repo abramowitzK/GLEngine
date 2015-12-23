@@ -14,7 +14,7 @@ public:
 	Mesh(std::string modelFileName);
 	~Mesh();
 	void Draw();
-	void InitMesh(const std::vector<Vertex3D> & vertices, int vertSize, const std::vector<unsigned int> & indices, int indexSize);
+	void InitMesh(const std::vector<Vertex3D> &vertices, const std::vector<unsigned int> &indices);
 private:
 	const std::string MESH_PATH = "";//"..\\..\\res\\models";
 	GLuint m_vbo;

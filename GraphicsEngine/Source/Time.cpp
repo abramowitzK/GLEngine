@@ -66,3 +66,14 @@ double Time::GetTime()
 	return (double)SDL_GetTicks() / 1000.0;
 #endif
 }
+
+double Time::s_deltaTime = 0.0;
+void Time::SetDeltaTime(double dt)
+{
+	s_deltaTime = dt;
+}
+
+double Time::DeltaTime()
+{
+	return s_deltaTime;
+}

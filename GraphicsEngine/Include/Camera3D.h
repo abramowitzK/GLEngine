@@ -15,7 +15,7 @@ public:
 	{
 		return m_view;
 	}
-	void Update(Vector3 direction);
+	void Update();
 private:
 	Matrix4 m_projection;
 	Matrix4 m_view;
@@ -25,5 +25,7 @@ private:
 	float m_zFar;
 	Vector3 m_up;
 	Vector3 m_position;
+	Vector3 m_cameraDirection;
+
 };
 

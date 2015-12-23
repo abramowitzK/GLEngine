@@ -130,3 +130,11 @@ void Window::SDLSetMousePosition(int x, int y)
 {
 	SDL_WarpMouseInWindow(s_window, x, y);
 }
+
+void Window::ConfineMouseCursor(bool confine)
+{
+	if (confine)
+		SDL_SetRelativeMouseMode(SDL_TRUE);
+	else
+		SDL_SetRelativeMouseMode(SDL_FALSE);
+}

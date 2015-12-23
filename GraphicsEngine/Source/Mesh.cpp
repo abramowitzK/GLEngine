@@ -41,7 +41,7 @@ Mesh::Mesh(std::string modelFileName) : m_fileName(modelFileName)
 		indices.push_back(face.mIndices[2]);
 	}
 	m_indices = 3 * model->mNumFaces;
-	InitMesh(vertices, sizeof(Vertex3D), indices, 1);
+	InitMesh(vertices, indices);
 }
 Mesh::~Mesh()
 {
@@ -56,19 +56,18 @@ void Mesh::Draw()
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 	// Pos
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex3D), BUFFER_OFFSET(0));
-
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex3D), 0);
+	glEnableClientState(GL_VERTEX_ARRAY);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo);
 	glDrawElements(GL_TRIANGLES, m_indices, GL_UNSIGNED_INT, 0);
-
 	glDisableVertexAttribArray(0);
 }
-void Mesh::InitMesh(const std::vector<Vertex3D> & vertices, int vertSize, const std::vector<unsigned int> & indices, int indexSize)
+void Mesh::InitMesh(const std::vector<Vertex3D> & vertices, const std::vector<unsigned int> & indices)
 {
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-	glBufferData(GL_ARRAY_BUFFER, vertSize * sizeof(Vertex3D), &vertices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex3D) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexSize * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
 }

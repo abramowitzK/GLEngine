@@ -23,6 +23,7 @@ public:
 	static const std::string& GetTitle();	
 	static void SetCursorVisible(bool visible);
 	static void SetMousePosition(float x, float y);
+	static void ConfineMouseCursor(bool confine);
 private:
 	static SDL_Window* s_window;
 	static SDL_GLContext s_glContext;

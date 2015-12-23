@@ -27,7 +27,7 @@ void Engine::Start()
 	RenderUtil::InitGraphics();
 	m_isRunning = true;
 	m_root = new GameObject();
-	m_mesh = new MeshRenderer("cube.obj");
+	m_mesh = new MeshRenderer("monkey.obj");
 	m_root->AddRenderingComponent(m_mesh);
 	m_cam = new Camera3D(45.0f, (float)m_width / (float)m_height, 0.1f, 1000.0f);
 	Run();
@@ -53,6 +53,7 @@ void Engine::Run()
 	{
 		double newTime = Time::GetTime();
 		double frameTime = newTime - currentTime;
+		Time::SetDeltaTime(frameTime);
 		if (frameTime > 0.25)
 			frameTime = 0.25;
 		currentTime = newTime;
@@ -96,23 +97,16 @@ void Engine::Update()
 	GLint loc = glGetUniformLocation(m_mesh->GetProgram(), "MVP");
 	glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(mvp));
 	m_root->Render();
-	if (Input::GetKey(Input::Keys::KEY_W))
-	{
-		m_cam->Update(Vector3(-0.1f, 0.0f, 0.0f));
-	}
-	if (Input::GetKey(Input::Keys::KEY_S))
-	{
-		m_cam->Update(Vector3(0.1f, 0.0f, 0.0f));
-	}
-	if (Input::GetKey(Input::Keys::KEY_A))
-	{
-		m_cam->Update(Vector3(0.0f, 0.0f, -0.1f));
-	}
-	if (Input::GetKey(Input::Keys::KEY_D))
-	{
-		m_cam->Update(Vector3(0.0f, 0.0f, 0.1f));
-	}
+
+	m_cam->Update();
 
 	
+}
+
+void Engine::BeginFrame()
+{
+}
+void Engine::EndFrame()
+{
 }
 

@@ -3,6 +3,8 @@
 typedef struct
 {
 	Vector3 pos;
+	Vector3 normal;
+	Vector2 texCoords;
 
 } Vertex3D;
 typedef struct
