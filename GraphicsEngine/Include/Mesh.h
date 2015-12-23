@@ -16,7 +16,7 @@ public:
 	void Draw();
 	void InitMesh(const std::vector<Vertex3D> &vertices, const std::vector<unsigned int> &indices);
 private:
-	const std::string MESH_PATH = "";//"..\\..\\res\\models";
+	const std::string MESH_PATH = ".\\res\\models\\";//"..\\..\\res\\models";
 	GLuint m_vbo;
 	GLuint m_ibo;
 	GLuint m_indices;

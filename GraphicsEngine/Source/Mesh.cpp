@@ -6,7 +6,7 @@ Mesh::Mesh(std::string modelFileName) : m_fileName(modelFileName)
 	glGenBuffers(1, &m_ibo);
 	Assimp::Importer importer;
 	std::string path = MESH_PATH + m_fileName;
-	const aiScene* scene = importer.ReadFile(m_fileName.c_str(),
+	const aiScene* scene = importer.ReadFile(path.c_str(),
 		aiProcess_Triangulate |
 		aiProcess_GenSmoothNormals |
 		aiProcess_FlipUVs);
