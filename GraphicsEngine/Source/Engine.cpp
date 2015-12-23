@@ -25,11 +25,12 @@ Engine::~Engine()
 void Engine::Start()
 {
 	RenderUtil::InitGraphics();
+	Window::ConfineMouseCursor(true);
 	m_isRunning = true;
 	m_root = new GameObject();
 	m_mesh = new MeshRenderer("monkey.obj");
 	m_root->AddRenderingComponent(m_mesh);
-	m_cam = new Camera3D(45.0f, (float)m_width / (float)m_height, 0.1f, 1000.0f);
+	m_cam = new Camera3D(90.0f, (float)m_width / (float)m_height, 0.1f, 1000.0f);
 	Run();
 }
 

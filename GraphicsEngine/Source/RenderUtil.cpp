@@ -11,6 +11,7 @@ void RenderUtil::InitGraphics()
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	glFrontFace(GL_CCW);
-	glDisable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 }

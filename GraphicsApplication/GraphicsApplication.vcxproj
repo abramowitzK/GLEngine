@@ -72,12 +72,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)/deps/include;$(SolutionDir)/GraphicsEngine;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)deps/lib;$(SolutionDir)deps/lib/Assimp;$(SolutionDir)deps/lib/GLEW;$(SolutionDir)deps/lib/SDL;$(SolutionDir)deps/lib/Bullet;$(SolutionDir)x64/Debug;$(SolutionDir)deps/lib/Lua;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)deps/lib;$(SolutionDir)deps/lib/Assimp;$(SolutionDir)deps/lib/GLEW;$(SolutionDir)deps/lib/SDL;$(SolutionDir)deps/lib/Bullet;$(SolutionDir)x64/Debug;$(SolutionDir)deps/lib/Lua;$(SolutionDir)deps/lib/Soil;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)/deps/include;$(SolutionDir)/GraphicsEngine;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)deps/lib;$(SolutionDir)deps/lib/Assimp;$(SolutionDir)deps/lib/GLEW;$(SolutionDir)deps/lib/SDL;$(SolutionDir)deps/lib/Bullet;$(SolutionDir)x64/Debug;$(SolutionDir)deps/lib/Lua;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)deps/lib;$(SolutionDir)deps/lib/Assimp;$(SolutionDir)deps/lib/GLEW;$(SolutionDir)deps/lib/SDL;$(SolutionDir)deps/lib/Bullet;$(SolutionDir)x64/Debug;$(SolutionDir)deps/lib/Lua;$(SolutionDir)deps/lib/Soil;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -97,7 +97,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;opengl32.lib;glew32s.lib;BulletDynamics_vs2010_x64_debug.lib;BulletCollision_vs2010_x64_debug.lib;LinearMath_vs2010_x64_debug.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;opengl32.lib;glew32s.lib;BulletDynamics_vs2010_x64_debug.lib;BulletCollision_vs2010_x64_debug.lib;LinearMath_vs2010_x64_debug.lib;assimp.lib;soil.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -112,7 +112,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;opengl32.lib;glew32s.lib;BulletDynamics_vs2010_x64_debug.lib;BulletCollision_vs2010_x64_debug.lib;LinearMath_vs2010_x64_debug.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;opengl32.lib;glew32s.lib;BulletDynamics_vs2010_x64_debug.lib;BulletCollision_vs2010_x64_debug.lib;LinearMath_vs2010_x64_debug.lib;assimp.lib;soil.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
