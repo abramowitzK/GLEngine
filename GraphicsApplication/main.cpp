@@ -3,7 +3,7 @@
 #undef main
 int main(int argc, char* argv[])
 {
-	Engine* engine = new Engine(800, 600, "3DEngine");
+	Engine* engine = new Engine(1920, 1080, "3DEngine");
 	engine->Start();
 	delete engine;
 	return 0;

@@ -138,3 +138,10 @@ void Window::ConfineMouseCursor(bool confine)
 	else
 		SDL_SetRelativeMouseMode(SDL_FALSE);
 }
+void Window::ConfineAndShowMouseCursor(bool confine)
+{
+	if (confine)
+		SDL_SetWindowGrab(s_window, SDL_TRUE);
+	else
+		SDL_SetWindowGrab(s_window, SDL_FALSE);
+}

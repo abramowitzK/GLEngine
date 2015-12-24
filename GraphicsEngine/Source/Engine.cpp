@@ -25,6 +25,7 @@ Engine::~Engine()
 void Engine::Start()
 {
 	RenderUtil::InitGraphics();
+//	Window::SetFullScreen(true);
 	Window::ConfineMouseCursor(true);
 	m_isRunning = true;
 	m_root = new GameObject();
@@ -70,6 +71,8 @@ void Engine::Run()
 #endif
 		while (accumulator >= dt)
 		{
+			if (Input::GetKey(Input::Keys::KEY_ESCAPE))
+				Window::SetIsCloseRequested(true);
 			//Close window if necessary
 			if (Window::IsCloseRequested())
 				Stop();

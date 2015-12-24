@@ -5,7 +5,7 @@
 Camera3D::Camera3D(float fovY, float aspect, float zNear, float zFar)
 	:
 	m_fovY(fovY),
-	m_aspectRatio(aspect),
+	m_aspectRatio(Window::GetAspect()),
 	m_zNear(zNear),
 	m_zFar(zFar),
 	m_up(Vector3(0.0, 1.0, 0.0)),
@@ -23,7 +23,7 @@ Camera3D::~Camera3D()
 }
 void Camera3D::Update()
 {
-	GLfloat speed = (double)5.0f * Time::DeltaTime();
+	GLfloat speed = (double)1.0f * Time::DeltaTime();
 	if (Input::GetKey(Input::Keys::KEY_W))
 	{
 		m_position += speed * m_cameraDirection;
@@ -45,7 +45,7 @@ void Camera3D::Update()
 	GLfloat yoffset = -rel.y;
 	if (xoffset != 0 || yoffset != 0)
 	{
-		GLfloat sensitivity = 0.15;
+		GLfloat sensitivity = 0.35;
 		xoffset *= sensitivity;
 		yoffset *= sensitivity;
 
