@@ -23,7 +23,7 @@ Camera3D::~Camera3D()
 }
 void Camera3D::Update()
 {
-	GLfloat speed = (double)1.0f * Time::DeltaTime();
+	GLfloat speed = (float)((double)1.0f * Time::DeltaTime());
 	if (Input::GetKey(Input::Keys::KEY_W))
 	{
 		m_position += speed * m_cameraDirection;
@@ -45,9 +45,10 @@ void Camera3D::Update()
 	GLfloat yoffset = -rel.y;
 	if (xoffset != 0 || yoffset != 0)
 	{
-		GLfloat sensitivity = 0.35;
+		GLfloat sensitivity = 0.4f;
+		GLfloat ySense = 0.5f;
 		xoffset *= sensitivity;
-		yoffset *= sensitivity;
+		yoffset *= ySense;
 
 		m_yaw += xoffset;
 		m_pitch += yoffset;

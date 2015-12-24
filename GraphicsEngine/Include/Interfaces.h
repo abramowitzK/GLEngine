@@ -1,5 +1,6 @@
 #pragma once
 #include "Component.h"
+#include "Shader.h"
 //Renderable interface
 class IRenderableComponent : public Component
 {

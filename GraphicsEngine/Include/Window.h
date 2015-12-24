@@ -1,7 +1,6 @@
 #pragma once
 #include <SDL.h>
 #include <string>
-#define GLEW_STATIC
 #include <GL\glew.h>
 
 class Window

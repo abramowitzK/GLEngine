@@ -29,7 +29,7 @@ void Engine::Start()
 	Window::ConfineMouseCursor(true);
 	m_isRunning = true;
 	m_root = new GameObject();
-	m_mesh = new MeshRenderer("teapot.obj");
+	m_mesh = new MeshRenderer("buddha.obj");
 	m_root->AddRenderingComponent(m_mesh);
 	m_cam = new Camera3D(70.0f, (float)m_width / (float)m_height, 0.1f, 1000.0f);
 	Run();
@@ -81,6 +81,7 @@ void Engine::Run()
 			t += dt;
 			accumulator -= dt;
 		}
+
 		//All rendering done. Flip buffers
 		Update();
 		Input::ResetRelativePosition();

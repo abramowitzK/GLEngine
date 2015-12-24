@@ -30,9 +30,6 @@
     <ClInclude Include="Include\Scripting\LuaEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Scripting\ScriptCommon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Include\Math3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
