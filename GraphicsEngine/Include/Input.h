@@ -2,7 +2,7 @@
 #include "Math3D.h"
 #include "Window.h"
 #include "KeyState.h"
-
+#include "MouseState.h"
 class Input final
 {
 public:
@@ -177,12 +177,15 @@ public:
 	static bool GetMouse(int button);
 	static bool GetMouseDown(int button);
 	static bool GetMouseUp(int button);
-	static Vector2f GetMousePosition();
+	static Vector2 GetMousePosition();
 	static void SetCursor(bool value);
 	static void SetMousePosition(Vector2f pos);
+	static Vector2 GetRelativeMouseMotion();
+	static void ResetRelativePosition();
 
 protected:
 private:
+	static MouseState s_mouseState;
 	static KeyState s_keyState;
 	static SDL_Event s_e;
 	const static int NUM_KEYS = 256;

@@ -80,6 +80,7 @@ void Engine::Run()
 		}
 		//All rendering done. Flip buffers
 		Update();
+		Input::ResetRelativePosition();
 		Window::SwapBuffers();
 #ifdef _DEBUG
 		frames++;

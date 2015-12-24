@@ -2,15 +2,17 @@
 #include "..\Include\Input.h"
 #include "..\Include\Time.h"
 #include <GL\glew.h>
-Camera3D::Camera3D(float fovY, float aspect, float zNear, float zFar) 
-	: 
-	m_fovY(fovY), 
-	m_aspectRatio(aspect), 
-	m_zNear(zNear), 
-	m_zFar(zFar), 
-	m_up(Vector3(0.0, 1.0, 0.0)), 
+Camera3D::Camera3D(float fovY, float aspect, float zNear, float zFar)
+	:
+	m_fovY(fovY),
+	m_aspectRatio(aspect),
+	m_zNear(zNear),
+	m_zFar(zFar),
+	m_up(Vector3(0.0, 1.0, 0.0)),
 	m_position(GetTransform().GetTranslation()),
-	m_cameraDirection(Vector3(0.0f,0.0f,-1.0f))
+	m_cameraDirection(Vector3(0.0f, 0.0f, -1.0f)),
+	m_yaw(-90.0f),
+	m_pitch(0.0f)
 {
 	m_projection = glm::perspective(fovY, aspect, zNear, zFar);
 	m_view = glm::lookAt(m_position, m_position + m_cameraDirection, m_up);
@@ -37,6 +39,28 @@ void Camera3D::Update()
 	if (Input::GetKey(Input::Keys::KEY_D))
 	{
 		m_position += glm::normalize(glm::cross(m_cameraDirection, m_up)) * speed;
+	}
+	Vector2 rel = Input::GetRelativeMouseMotion();
+	GLfloat xoffset = rel.x;
+	GLfloat yoffset = -rel.y;
+	if (xoffset != 0 || yoffset != 0)
+	{
+		GLfloat sensitivity = 0.15;
+		xoffset *= sensitivity;
+		yoffset *= sensitivity;
+
+		m_yaw += xoffset;
+		m_pitch += yoffset;
+		if (m_pitch > 89.0f)
+			m_pitch = 89.0f;
+		if (m_pitch < -89.0f)
+			m_pitch = -89.0f;
+
+		glm::vec3 front;
+		front.x = cos(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));
+		front.y = sin(glm::radians(m_pitch));
+		front.z = sin(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));
+		m_cameraDirection = glm::normalize(front);
 	}
 
 	m_view = glm::lookAt(m_position, m_position + m_cameraDirection, m_up);

@@ -1,5 +1,6 @@
 #include "../Include/Input.h"
 KeyState Input::s_keyState = KeyState();
+MouseState Input::s_mouseState = MouseState();
 SDL_Event Input::s_e;
 void Input::ProcessInput()
 {
@@ -9,12 +10,11 @@ void Input::ProcessInput()
 		if (s_e.type == SDL_QUIT)
 			Window::SetIsCloseRequested(true);
 
-		//if (e.type == SDL_MOUSEMOTION)
-		//{
-		//	mouseX = e.motion.x;
-		//	mouseY = e.motion.y;
-		//}
-
+		if (s_e.type == SDL_MOUSEMOTION)
+		{
+			s_mouseState.SetRelativeMotion(s_e.motion.xrel, s_e.motion.yrel);
+			s_mouseState.SetPosition(s_e.motion.x, s_e.motion.y);
+		}
 		if (s_e.type == SDL_KEYDOWN)
 		{
 			s_keyState.KeyDown(s_e.key.keysym.scancode);
@@ -85,4 +85,12 @@ void Input::SetCursor(bool visible)
 void Input::SetMousePosition(Vector2f pos)
 {
 	Window::SetMousePosition((int)pos.GetX(), (int)pos.GetY());
+}
+Vector2 Input::GetRelativeMouseMotion()
+{
+	return s_mouseState.GetRelativeMotion();
+}
+void Input::ResetRelativePosition()
+{
+	s_mouseState.SetRelativeMotion(0, 0);
 }

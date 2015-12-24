@@ -26,6 +26,8 @@ private:
 	Vector3 m_up;
 	Vector3 m_position;
 	Vector3 m_cameraDirection;
+	float m_yaw;
+	float m_pitch;
 
 };
 

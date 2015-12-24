@@ -177,8 +177,10 @@
     <ClInclude Include="Include\MeshRenderer.h" />
     <ClInclude Include="Include\Shader.h" />
     <ClInclude Include="Include\Mesh.h" />
+    <ClInclude Include="Include\MouseState.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\MouseState.cpp" />
     <ClCompile Include="Source\Mesh.cpp" />
     <ClCompile Include="Source\MeshRenderer.cpp" />
     <ClCompile Include="Source\Shader.cpp" />

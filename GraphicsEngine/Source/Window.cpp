@@ -98,7 +98,7 @@ void Window::CreateSDLWindow(const char * title, int x, int y, int width, int he
 	s_window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL | mode);
 	s_glContext = SDL_GL_CreateContext(s_window);
 
-	SDL_GL_SetSwapInterval(0);
+	SDL_GL_SetSwapInterval(1);
 }
 
 void Window::SDLSetWindowFullscreen(bool value)
