@@ -89,6 +89,14 @@ void Engine::Run()
 
 void Engine::Update()
 {
+	if (Input::GetKey(Input::Keys::KEY_0))
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	}
+	if (Input::GetKey(Input::Keys::KEY_1))
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
 	//Hack just to test rendering
 	RenderUtil::ClearScreen();
 	Matrix4 view = m_cam->GetViewMatrix();

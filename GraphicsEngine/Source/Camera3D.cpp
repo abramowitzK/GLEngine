@@ -19,7 +19,6 @@ Camera3D::Camera3D(float fovY, float aspect, float zNear, float zFar)
 Camera3D::~Camera3D()
 {
 }
-
 void Camera3D::Update()
 {
 	GLfloat speed = (double)5.0f * Time::DeltaTime();
