@@ -88,7 +88,7 @@ public:
 	{
 		m_translation += Vector3(x, y, z);
 	}
-	inline Vector3 GetTranslation() const
+	inline Vector3 GetPosition() const
 	{
 		return m_translation;
 	}

@@ -1,6 +1,7 @@
 #include "..\Include\Shader.h"
 #include <cassert>
 
+//Change this back to what it should be. Right now it's relative to proj. Should be relative to exe
 std::string Shader::SHADER_DIR = "";//"..\\..\\res\\shaders";
 Shader::Shader()
 {
